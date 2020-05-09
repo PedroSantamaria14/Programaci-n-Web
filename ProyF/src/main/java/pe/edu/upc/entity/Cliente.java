@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +15,8 @@ public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private char dni;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int dni;
 	
 	@Column(name ="nombre",nullable=false,length=30)
 	private String nombre;
@@ -38,10 +41,11 @@ public class Cliente implements Serializable{
 		this.direccion = direccion;
 		this.contraseña = contraseña;
 	}
-	public char getDni() {
+	
+	public int getDni() {
 		return dni;
 	}
-	public void setDni(char dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 	public String getNombre() {
